@@ -17,17 +17,20 @@
 <body>
     <div class="header navbar navbar-light bg-primary text-light p-3">Weather Dashboard</div>
     <div class = "current-column row">
-        <h1 class ="search-title">Search for a City:</h1>
-   
-        <div class="search-form col">
-            <input class="search-input" placeholder="City Name">
-                <button class="search">Search</button>
+        <h1 class ="search-title px-4">Search for a City:</h1>
+
+        <div class="col">
+            <div class="search-form">
+                <input class="search-input px-4" placeholder="City Name">
+                    <button class="button btn btn-outline-primary py-0 shadow-none" onclick="searchFormSubmit()">Search</button>
+            </div>
+            <div class="search-history list-group"></div>
         </div>
 
         <div class="current col d-flex justify-content-start"></div>
+
     </div>
 
-    <div class="search-history"></div>
     <div class="forecast"></div>
 
     <script src="script.js"></script>

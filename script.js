@@ -8,105 +8,192 @@ var forecastEl = document.querySelector(".forecast");
 var search = document.querySelector(".search");
 var searchFormEl = document.querySelector(".search-form");
 
-var searchHistoryEl = document.querySelector("search-history");
+var searchHistoryEl = document.querySelector(".search-history");
+
+var button = document.querySelector('.button');
+
+var pastSearchesArray =
+    JSON.parse(localStorage.getItem("pastSearches"))
+    || [];
+
+
+// how to load search history to button
+// how to remove empty buttons if youre on the first search
+// need icon representation of weather conditions
 
 function forecast (weather) {
     console.log("weather", weather);
+    // this clear out the container for the next search
+    forecastEl.textContent = '';
 
     var forecastContainer = document.createElement("div");
-    forecastContainer.classList.add('text-dark', 'mb-3', 'p-3');
 
     var forecastBody = document.createElement("div");
-    forecastBody.classList.add('card-body');
+    forecastBody.classList.add('row');
     forecastEl.append(forecastBody);
 
-    var forecastOneDate = document.createElement("h3");
+    //
+
+    var forecastOneContainer = document.createElement("div");
+    forecastOneContainer.classList.add('col');
+
+    var forecastOneDate = document.createElement("p");
     forecastOneDate.textcontent = dayjs.unix(weather.list[2].dt).format('MMM D, YYYY');
     console.log(forecastOneDate.textcontent)
 
+    var forecastOneIcon = document.createElement('p');
+    var oneImg = document.createElement('img');
+    oneImg.setAttribute('src', 'https://openweathermap.org/img/wn/' + weather.list[2].weather[0].icon + '@2x.png');
+    console.log(oneImg)
+    forecastOneIcon.appendChild(oneImg);
+
     var forecastOne = document.createElement("p");
-    forecastOne.textcontent = weather.list[2].main.temp + "°F";
+    forecastOne.textcontent = "Temperature: " + weather.list[2].main.temp + "°F";
     console.log(forecastOne.textcontent)
 
     var forecastOneWind = document.createElement("p");
-    forecastOneWind.textcontent = weather.list[2].wind.speed + "MPH";
+    forecastOneWind.textcontent = "Wind Speed: " + weather.list[2].wind.speed + "MPH";
     console.log(forecastOneWind.textcontent)
 
     var forecastOneHumidity = document.createElement("p");
-    forecastOneHumidity.textcontent = weather.list[2].main.humidity +"%";
-    console.log(forecastOneHumidity.textcontent)
+    forecastOneHumidity.textcontent =  "Humidity: " + weather.list[2].main.humidity +"%";
+    console.log(forecastOneHumidity.textcontent);
 
-    var forecastTwoDate = document.createElement("h3");
+    forecastOneContainer.append(forecastOneDate.textcontent, forecastOneIcon, " " + forecastOne.textcontent, " " + forecastOneWind.textcontent, " " + forecastOneHumidity.textcontent)    
+    console.log(forecastOneContainer)
+
+    //
+
+    var forecastTwoContainer = document.createElement("div");
+    forecastTwoContainer.classList.add('col');
+
+
+    var forecastTwoDate = document.createElement("p");
     forecastTwoDate.textcontent = dayjs.unix(weather.list[10].dt).format('MMM D, YYYY');
     console.log(forecastTwoDate.textcontent)
 
+    var forecastTwoIcon = document.createElement('p');
+    var twoImg = document.createElement('img');
+    twoImg.setAttribute('src', 'https://openweathermap.org/img/wn/' + weather.list[10].weather[0].icon + '@2x.png');
+    console.log(twoImg)
+    forecastTwoIcon.appendChild(twoImg);
+
+
     var forecastTwo = document.createElement("p");
-    forecastTwo.textcontent = weather.list[10].main.temp + "°F";
+    forecastTwo.textcontent = "Temperature: " + weather.list[10].main.temp + "°F";
     console.log(forecastTwo.textcontent)
 
     var forecastTwoWind = document.createElement("p");
-    forecastTwoWind.textcontent = weather.list[10].wind.speed + "MPH";
+    forecastTwoWind.textcontent = "Wind Speed: " + weather.list[10].wind.speed + "MPH";
     console.log(forecastTwoWind.textcontent)
 
     var forecastTwoHumidity = document.createElement("p");
-    forecastTwoHumidity.textcontent = weather.list[10].main.humidity +"%";
+    forecastTwoHumidity.textcontent =  "Humidity: " + weather.list[10].main.humidity +"%";
     console.log(forecastTwoHumidity.textcontent)
+    
+    forecastTwoContainer.append(forecastTwoDate.textcontent, forecastTwoIcon, " " + forecastTwo.textcontent, " " + forecastTwoWind.textcontent, " " + forecastTwoHumidity.textcontent)    
 
-    var forecastThreeDate = document.createElement("h3");
+
+    //
+
+    var forecastThreeContainer = document.createElement("div");
+    forecastThreeContainer.classList.add('col');
+
+
+    var forecastThreeDate = document.createElement("p");
     forecastThreeDate.textcontent = dayjs.unix(weather.list[18].dt).format('MMM D, YYYY');
     console.log(forecastThreeDate.textcontent)
 
+    var forecastThreeIcon = document.createElement('p');
+    var threeImg = document.createElement('img');
+    threeImg.setAttribute('src', 'https://openweathermap.org/img/wn/' + weather.list[18].weather[0].icon + '@2x.png');
+    console.log(threeImg)
+    forecastThreeIcon.appendChild(threeImg);
+
     var forecastThree = document.createElement("p");
-    forecastThree.textcontent = weather.list[18].main.temp + "°F";
+    forecastThree.textcontent = "Temperature: " + weather.list[18].main.temp + "°F";
 
     var forecastThreeWind = document.createElement("p");
-    forecastThreeWind.textcontent = weather.list[18].wind.speed + "MPH";
+    forecastThreeWind.textcontent = "Wind Speed: " + weather.list[18].wind.speed + "MPH";
     console.log(forecastThreeWind.textcontent)
 
     var forecastThreeHumidity = document.createElement("p");
-    forecastThreeHumidity.textcontent = weather.list[18].main.humidity +"%";
+    forecastThreeHumidity.textcontent =  "Humidity: " + weather.list[18].main.humidity +"%";
     console.log(forecastThreeHumidity.textcontent)
+    
+    forecastThreeContainer.append(forecastThreeDate.textcontent, forecastThreeIcon, " " +     forecastThree.textcontent, " " + forecastThreeWind.textcontent, " " + forecastThreeHumidity.textcontent);
 
-    var forecastFourDate = document.createElement("h3");
+    //
+
+    var forecastFourContainer = document.createElement("div");
+    forecastFourContainer.classList.add('col');
+
+
+    var forecastFourDate = document.createElement("p");
     forecastFourDate.textcontent = dayjs.unix(weather.list[26].dt).format('MMM D, YYYY');
     console.log(forecastFourDate.textcontent)
 
+    var forecastFourIcon = document.createElement('p');
+    var fourImg = document.createElement('img');
+    fourImg.setAttribute('src', 'https://openweathermap.org/img/wn/' + weather.list[26].weather[0].icon + '@2x.png');
+    console.log(fourImg)
+    forecastFourIcon.appendChild(fourImg);
+
     var forecastFour = document.createElement("p");
-    forecastFour.textcontent = weather.list[26].main.temp + "°F";
+    forecastFour.textcontent = "Temperature: " + weather.list[26].main.temp + "°F";
 
     var forecastFourWind = document.createElement("p");
-    forecastFourWind.textcontent = weather.list[26].wind.speed + "MPH";
+    forecastFourWind.textcontent = "Wind Speed: " + weather.list[26].wind.speed + "MPH";
     console.log(forecastFourWind.textcontent)
 
     var forecastFourHumidity = document.createElement("p");
-    forecastFourHumidity.textcontent = weather.list[26].main.humidity +"%";
+    forecastFourHumidity.textcontent =  "Humidity: " + weather.list[26].main.humidity +"%";
     console.log(forecastFourHumidity.textcontent)
 
-    var forecastFiveDate = document.createElement("h3");
+    forecastFourContainer.append(forecastFourDate.textcontent, forecastFourIcon, " " + forecastFour.textcontent, " " + forecastFourWind.textcontent, " " + forecastFourHumidity.textcontent);
+
+
+    //
+
+    var forecastFiveContainer = document.createElement("div");
+    forecastFiveContainer.classList.add('col');
+
+
+    var forecastFiveDate = document.createElement("p");
     forecastFiveDate.textcontent = dayjs.unix(weather.list[34].dt).format('MMM D, YYYY');
     console.log(forecastFiveDate.textcontent)
 
+    var forecastFiveIcon = document.createElement('p');
+    var fiveImg = document.createElement('img');
+    fiveImg.setAttribute('src', 'https://openweathermap.org/img/wn/' + weather.list[34].weather[0].icon + '@2x.png');
+    console.log(fiveImg)
+    forecastFiveIcon.appendChild(fiveImg);
+
+
     var forecastFive = document.createElement("p");
-    forecastFive.textcontent = weather.list[34].main.temp + "°F";
+    forecastFive.textcontent = "Temperature: " + weather.list[34].main.temp + "°F";
 
     var forecastFiveWind = document.createElement("p");
-    forecastFiveWind.textcontent = weather.list[34].wind.speed + "MPH";
+    forecastFiveWind.textcontent = "Wind Speed: " + weather.list[34].wind.speed + "MPH";
     console.log(forecastFiveWind.textcontent)
 
     var forecastFiveHumidity = document.createElement("p");
-    forecastFiveHumidity.textcontent = weather.list[34].main.humidity +"%";
+    forecastFiveHumidity.textcontent = "Humidity: " + weather.list[34].main.humidity +"%";
     console.log(forecastFiveHumidity.textcontent)
 
-    forecastBody.append(forecastOneDate.textcontent, " " + forecastOne.textcontent, " " + forecastOneWind.textcontent, " " + forecastOneHumidity.textcontent, "  " + forecastTwoDate.textcontent, " " + forecastTwo.textcontent, " " + forecastTwoWind.textcontent, " " + forecastTwoHumidity.textcontent, "  " + forecastThreeDate.textcontent, " " +     forecastThree.textcontent, " " + forecastThreeWind.textcontent, " " + forecastThreeHumidity.textcontent, "  " + forecastFourDate.textcontent, " " + forecastFour.textcontent, " " + forecastFourWind.textcontent, " " + forecastFourHumidity.textcontent, "  " + forecastFiveDate.textcontent, " " + forecastFive.textcontent, " " + forecastFiveWind.textcontent, " " + forecastFiveHumidity.textcontent);
+    forecastFiveContainer.append(forecastFiveDate.textcontent, forecastFiveIcon, forecastFive.textcontent, " " + forecastFiveWind.textcontent, " " + forecastFiveHumidity.textcontent);
+
+
+    forecastBody.append(forecastOneContainer,forecastTwoContainer,forecastThreeContainer, forecastFourContainer, forecastFiveContainer);
 
     forecastEl.append(forecastContainer);
 };
 
 
 function showResults (location) {
-    console.log(location);
+    current.textContent = '';
+
     var currentContainer = document.createElement("div");
-    currentContainer.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
 
     var currentBody = document.createElement("div");
     currentBody.classList.add('card-body');
@@ -115,19 +202,25 @@ function showResults (location) {
     var currentCityName = document.createElement("h3");
     currentCityName.textContent = location.name; 
 
+    var currentCityIcon = document.createElement("div");
+    var img = document.createElement('img');
+    img.setAttribute('src', 'https://openweathermap.org/img/wn/' + location.weather[0].icon + '@2x.png');
+    console.log(img)
+    currentCityIcon.appendChild(img)
+
     var currentCityDate = document.createElement("p");
     currentCityDate.textContent = dayjs.unix(location.dt).format('MMM D, YYYY');
 
     var currentCityTemp =document.createElement("p");
-    currentCityTemp.textContent = location.main.temp + " °F";
+    currentCityTemp.textContent =  "Temperature: " + location.main.temp + " °F";
 
     var currentCityWind = document.createElement("p");
-    currentCityWind.textContent = location.wind.speed + " MPH";
+    currentCityWind.textContent =  "Wind Speed: " + location.wind.speed + " MPH";
 
     var currentCityHumidity = document.createElement("p");
-    currentCityHumidity.textContent = location.main.humidity + "%";
+    currentCityHumidity.textContent =  "Humidity: " + location.main.humidity + "%";
 
-    currentBody.append(currentCityName, currentCityDate, currentCityTemp, currentCityWind, currentCityHumidity);
+    currentBody.append(currentCityName, currentCityIcon, currentCityDate, currentCityTemp, currentCityWind, currentCityHumidity);
 
     current.append(currentContainer);
 };
@@ -170,19 +263,28 @@ function searchApi(city) {
         })
 };
 
-function searchHistory(city) {
-    var historyContainer = document.createElement("div");
-    historyContainer.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
+function searchHistory() {
+    searchHistoryEl.textContent = '';
 
-    var historyBody = document.createElement("div");
-    historyBody.classList.add('card-body');
-    searchHistoryEl.append(historyBody);
+    if (pastSearchesArray.length > 3) {
+        pastSearchesArray.shift()
+    };
 
-    var historyInfo = localStorage.getItem(city);
+    for (var i = 0; i < pastSearchesArray.length; i++) {
+        var historyContainer = document.createElement("p");
+        historyContainer.textContent = pastSearchesArray[i];
+        historyContainer.classList.add('btn', 'btn-outline-primary', 'list-group-item', 'px-0', 'history-button');
+        searchHistoryEl.appendChild(historyContainer);
 
-    historyBody.append(historyInfo);
-
-    searchHistoryEl.append(historyContainer);
+        // for (var i = 0; i < 5; i++) {
+            // var historyContainer = document.createElement("btn");
+            // var city = 
+            // historyContainer.textContent = city;
+            // historyContainer.classList.add('btn', 'btn-outline-primary', 'list-group-item');
+            // searchHistoryEl.appendChild(historyContainer);
+            // console.log(historyContainer);
+        // }
+    }
 };
 
 function searchFormSubmit(event) {
@@ -190,7 +292,9 @@ function searchFormSubmit(event) {
 
     var city = document.querySelector(".search-input").value;
 
-    localStorage.setItem(".search-input", city);
+    pastSearchesArray.push(city);
+
+    localStorage.setItem("pastSearches", JSON.stringify(pastSearchesArray))
 
     if (!city) {
         console.error("You need a search input value!");
@@ -201,4 +305,6 @@ function searchFormSubmit(event) {
     searchHistory(city)
 };
 
-searchFormEl.addEventListener("click", searchFormSubmit);
+
+button.addEventListener("click", searchFormSubmit)
+    // event.preventDefault();
