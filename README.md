@@ -1,57 +1,68 @@
 # Weather-Dashboard
-Name
-<br>
-Elias Rivera Weather Dashboard 
-<br>
-<br>
-Description
-<br>
-When you search for a city then you are presented with current and future conditions for that city. 
-<br>
-When you view current weather conditions for that city then you are presented with the city name, the date, and no icon representation of weather conditions, the temperature, the humidity, and the wind speed. 
-<br>
-When you view future weather conditions for that city then you are presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
-<br>
-<br>
-<br>
-Badges
-<br>
-<br>
-Visuals
-<br>
-<br>
-Project Webpage for Portfolio
-<br>
- https://eliasjrivera.github.io/Weather-Dashboard/
-<br>
-<br>
-Installation
-<br>
-<br>
-Usage
-<br> 
-<br>
-<br>
-Support
-<br>
+
+## Table of Contents
+- [Description](#description)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Visuals](#visuals)
+- [Project Repo](#project-repo)
+- [Deployed Site](#deployed-site)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Support](#support)
+- [Contributing](#contributing)
+- [Authors and Acknowledgement](#authors-and-acknowledgement)
+- [Project Status](#project-status)
+
+## Description
+  
+### User Story
+  
+```
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
+```
+
+### Acceptance Criteria
+
+```
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
+```
+
+## Visuals
+![](./gif/app.gif)
+
+## Project Repo
+[Elias Rivera GitHub Repo](https://github.com/eliasjrivera/Weather-Dashboard)
+
+## Deployed Site
+[Weather Dashboard Deployed Site](https://eliasjrivera.github.io/Weather-Dashboard/)
+
+## Installation
+`git clone git@github.com:eliasjrivera/Weather-Dashboard.git`
+
+## Usage
+`Open in Default Browser`
+
+## Support
 Elias Rivera
+
 eliasjohnrivera@gmail.com
-<br>
-<br>
-Roadmap
-<br>
-<br>
-Contributing
-<br>
-<br>
-Authors and Acknowledgment 
-<br>
+
+## Contributing
+Contributors should read the installation section.
+
+## Authors and Acknowledgement
 Elias Rivera
-<br>
-<br>
-License
-<br>
-<br>
-Project Status 
-<br>
-Project is not finished. 
+
+## Project Status
+Project is finished
