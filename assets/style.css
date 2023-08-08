@@ -1,4 +1,11 @@
 .list-group-item {
-    width: 27.6%;
+    line-height: 0.5;
+    border: none;
+}
+.card-body {
+    flex: auto;
 }
 
+.search-column {
+    background-color: #ffcc00;
+}
