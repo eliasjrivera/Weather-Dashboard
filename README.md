@@ -59,7 +59,7 @@ Elias Rivera
 eliasjohnrivera@gmail.com
 
 ## Contributing
-Contributors should read the installation section.
+Contributors should read the installation section
 
 ## Authors and Acknowledgement
 Elias Rivera
